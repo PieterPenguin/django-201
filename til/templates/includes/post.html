@@ -3,7 +3,8 @@
 <!-- component is from https://tailwindcomponents.com/component/post-artical -->
 <div class="max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md" style='width: 50rem'>
     <div class="flex justify-between items-center">
-        <span class="font-light text-gray-600">{{ post.date|date:"F j, Y, g:i:a" }}</span>
+        <span class="font-bold text-2xl">{{post.title}}</span>
+        <span class="font-light text-gray-600">at {{ post.date|date:"F j, Y, g:i:a" }}</span>
     </div>
     <div class="mt-2">
         <p class="mt-2 text-gray-600">{{ post.text }}</p>

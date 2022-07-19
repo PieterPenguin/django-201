@@ -43,7 +43,7 @@ class PostDetailView(DetailView):
 class CreateNewPost(LoginRequiredMixin, CreateView):
     model = Post
     template_name = "feed/create.html"
-    fields = ['text']
+    fields = ["title", 'text']
     success_url = "/"
 
     def dispatch(self, request, *args, **kwargs):
@@ -60,7 +60,8 @@ class CreateNewPost(LoginRequiredMixin, CreateView):
         # TODO: There is a bug here when you go to /new/ to create a post.
         # You must figure out how to determine if this is an Ajax request (or not an ajax request).
         post = Post.objects.create(
-            text=request.POST.get("text"),
+				title=request.POST.get('title'),
+				text=request.POST.get("text"),
             author=request.user,
         )
 

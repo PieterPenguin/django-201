@@ -12,39 +12,43 @@
 <body>
 
 <!-- component is from https://tailwindcomponents.com/component/sidebar-navigation -->
-<div class="min-h-screen flex flex-row bg-gray-100">
-  <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
-    <div class="flex items-center justify-center h-20 shadow-md">
-      <h1 class="text-3xl uppercase text-indigo-500">TIL</h1>
-    </div>
-    <ul class="flex flex-col py-4">
-      <li>
-        <a href="/" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-home"></i></span>
-          <span class="text-sm font-medium">Home</span>
-        </a>
-      </li>
-      {% if request.user.is_authenticated %}
-        <li>
-            <a href="{% url 'feed:new_post' %}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 js-toggle-modal">
-              <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-layer-plus"></i></span>
-              <span class="text-sm font-medium">New post</span>
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'account_logout' %}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-            <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-log-out"></i></span>
-            <span class="text-sm font-medium">Logout</span>
-            </a>
-        </li>
-      {% else %}
+<div class="min-h-screen flex flex-row bg-gray-900">
+	<div class="flex flex-col w-56 bg-gray-800 bg-opacity-80 rounded-r-3xl overflow-hidden py-7 px-3">
+			<div class="flex items-center justify-center hue-rotate-30 h-20 shadow-md rounded-r-2xl rounded-l-2xl">
+					<h1 class="text-3xl uppercase text-white">Mijn Projecten</h1>
+			</div>
+<ul class="flex flex-col py-4">
+<li>
+	<a href="/"
+	class="flex flex-row items-center bg-gray-400 border-b rounded-t-md h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-900 hover:text-gray-800 my-2">
+			<span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-900"><i class="bx bx-home"></i></span>
+			<span class="text-sm font-medium">Home</span>
+	</a>
+</li>
+     
+	{% if request.user.is_authenticated %}
+		<li>
+			<a href="{% url 'feed:new_post' %}"
+			class="flex flex-row items-center bg-gray-400 border-b rounded-t-md h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-900 				hover:text-gray-800 js-toggle-modal">
+				<span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-900"><i class="bx bx-layer-plus"></i></span>
+				<span class="text-sm font-medium">New post</span>
+			</a>
+		</li>
+		<li class="my-2">
+			<a href="{% url 'account_logout' %}"
+			class="flex flex-row items-center bg-gray-400 border-b rounded-t-md h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-900 hover:text-gray-800">
+				<span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-900"><i class="bx bx-log-out"></i></span>
+				<span class="text-sm font-medium">Logout</span>
+			</a>
+		</li>
+    {% else %}
         <li>
             <a href="{% url 'account_login' %}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
             <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-log-in"></i></span>
             <span class="text-sm font-medium">Login</span>
             </a>
         </li>
-      {% endif %}
+    {% endif %}
     </ul>
   </div>
   <div class="p-16">
@@ -66,6 +70,11 @@
         <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
         </svg>
         </div>
+		<hr>
+        <div class="w-full">
+          <textarea class="border-2 border-blue-500 my-2 w-full js-post-title" placeholder="Enter your title" rows="1" maxlength="40" data-post-url="{% url 'feed:new_post' %}"></textarea>
+        </div>
+        <hr>
         <hr>
         <div class="w-full">
           <textarea class="border-2 border-blue-500 my-4 w-full js-post-text" placeholder="Enter your post" rows="3" maxlength="240" data-post-url="{% url 'feed:new_post' %}"></textarea>
